@@ -1,13 +1,60 @@
 # Kaggle MCP Server
 
-A Model Context Protocol (MCP) server for interacting with Kaggle competitions.
+A Model Context Protocol (MCP) server for interacting with Kaggle competitions through Claude or other compatible AI assistants.
 
-## Features
+## Current Capabilities
 
-- List active Kaggle competitions
-- Download competition files
-- Submit predictions to competitions
-- View submission history
+The server currently provides the following operations for Kaggle competitions:
+
+### 🔍 List Competitions
+- List all active Kaggle competitions
+- Search competitions by keyword
+- Support for pagination to browse through results
+- Display competition details including name, category, deadline, and prize
+
+### 📥 Download Competition Files
+- Download files for any competition
+- Specify custom download path
+- Force re-download of existing files
+- Works with all public competition datasets
+
+### 📤 Submit to Competitions
+- Submit prediction files to competitions
+- Add custom submission messages
+- Get immediate feedback on submission status
+- Requires prior acceptance of competition rules on Kaggle website
+
+### 📋 List Submissions
+- View submission history for a specific competition
+- See submission status and scores
+- Track multiple submissions over time
+
+## Coming Soon
+
+The following features are planned for future updates:
+
+### 🗂️ Dataset Operations
+- List public datasets with search and filtering
+- Download dataset files
+- Create and update personal datasets
+- Version control for datasets
+
+### 📔 Notebook Integration
+- Create and manage notebooks
+- Upload and download notebooks
+- Run notebooks on Kaggle's infrastructure
+- Retrieve notebooks output
+
+### 👥 User Management
+- View user profiles and statistics
+- Follow/unfollow users
+- Get activity feeds
+
+### 🏆 Competition Analysis
+- Detailed competition leaderboard access
+- Team formation and management
+- Discussion forum integration
+- Automated benchmarking
 
 ## Prerequisites
 
@@ -107,7 +154,7 @@ Add the following configuration to your `claude_desktop_config.json` file:
   "mcpServers": {
     "kaggle": {
       "command": "node",
-      "args": ["/path/to/build/index.js"],
+      "args": ["/absolute/path/to/build/index.js"],
       "env": {
         "KAGGLE_USERNAME": "dishantsr",
         "KAGGLE_KEY": "7ad10662ff80cd405615799f8eb5c664"
@@ -117,17 +164,15 @@ Add the following configuration to your `claude_desktop_config.json` file:
 }
 ```
 
-## Available Tools
+## Example Queries
 
-- `list-competitions`: List active Kaggle competitions
-- `download-competition`: Download competition files
-- `submit-to-competition`: Submit predictions to a competition
-- `list-submissions`: View submission history
+Once connected to Claude, you can ask questions like:
 
-## Requirements
-
-- You must have the Kaggle CLI installed and authenticated
-- For competitions, you must have already accepted the competition rules on the Kaggle website
+- "Show me the active Kaggle competitions"
+- "Search for image classification competitions"
+- "Download the files for the Titanic competition"
+- "Submit my predictions.csv file to the housing-prices competition with the message 'Random forest model'"
+- "Show me my submissions for the digit-recognizer competition"
 
 ## Troubleshooting
 
