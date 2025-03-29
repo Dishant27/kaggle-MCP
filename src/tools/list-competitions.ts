@@ -1,6 +1,12 @@
 import { z } from "zod";
 import { listCompetitions } from "../utils/kaggle-api.js";
 
+type ListCompetitionsParams = {
+  search?: string;
+  page?: number;
+  pageSize?: number;
+};
+
 export const listCompetitionsTool = {
   parameters: {
     search: z.string().optional().describe("Search term to filter competitions"),
@@ -8,8 +14,9 @@ export const listCompetitionsTool = {
     pageSize: z.number().optional().describe("Number of competitions per page")
   },
   
-  handler: async ({ search, page, pageSize }) => {
+  handler: async (params: ListCompetitionsParams) => {
     try {
+      const { search, page, pageSize } = params;
       const result = await listCompetitions({ search, page, pageSize });
       
       // Parse CSV into more readable format
@@ -38,7 +45,7 @@ export const listCompetitionsTool = {
       
       return {
         content: [{
-          type: "text",
+          type: "text" as const,
           text: competitions.length > 0 
             ? formattedResult 
             : "No competitions found."
@@ -49,7 +56,7 @@ export const listCompetitionsTool = {
       console.error("Error listing competitions:", error);
       return {
         content: [{
-          type: "text",
+          type: "text" as const,
           text: `Error listing competitions: ${(error as Error).message}`
         }],
         isError: true

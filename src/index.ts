@@ -22,25 +22,25 @@ const server = new McpServer({
 server.tool(
   "list-competitions",
   listCompetitionsTool.parameters,
-  listCompetitionsTool.handler
+  (params) => listCompetitionsTool.handler(params)
 );
 
 server.tool(
   "download-competition",
   downloadCompetitionTool.parameters,
-  downloadCompetitionTool.handler
+  (params) => downloadCompetitionTool.handler(params)
 );
 
 server.tool(
   "submit-to-competition",
   submitToCompetitionTool.parameters,
-  submitToCompetitionTool.handler
+  (params) => submitToCompetitionTool.handler(params)
 );
 
 server.tool(
   "list-submissions",
   listSubmissionsTool.parameters,
-  listSubmissionsTool.handler
+  (params) => listSubmissionsTool.handler(params)
 );
 
 // Start the server

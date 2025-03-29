@@ -1,13 +1,18 @@
 import { z } from "zod";
 import { listSubmissions } from "../utils/kaggle-api.js";
 
+type ListSubmissionsParams = {
+  competition: string;
+};
+
 export const listSubmissionsTool = {
   parameters: {
     competition: z.string().describe("Competition ID to list submissions for")
   },
   
-  handler: async ({ competition }) => {
+  handler: async (params: ListSubmissionsParams) => {
     try {
+      const { competition } = params;
       const result = await listSubmissions(competition);
       
       // Parse CSV into more readable format
@@ -16,7 +21,7 @@ export const listSubmissionsTool = {
       if (lines.length <= 1) {
         return {
           content: [{
-            type: "text",
+            type: "text" as const,
             text: `No submissions found for competition "${competition}".`
           }]
         };
@@ -47,7 +52,7 @@ export const listSubmissionsTool = {
       
       return {
         content: [{
-          type: "text",
+          type: "text" as const,
           text: formattedResult
         }]
       };
@@ -56,7 +61,7 @@ export const listSubmissionsTool = {
       console.error("Error listing submissions:", error);
       return {
         content: [{
-          type: "text",
+          type: "text" as const,
           text: `Error listing submissions: ${(error as Error).message}`
         }],
         isError: true

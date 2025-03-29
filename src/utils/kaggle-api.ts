@@ -49,8 +49,8 @@ export async function execKaggleCommand(args: string[]): Promise<string> {
   // Verify credentials before executing command
   await verifyKaggleCredentials();
   
-  return new Promise((resolve, reject) => {
-    const process = spawn("kaggle", args, { 
+  return new Promise<string>((resolve, reject) => {
+    const childProc = spawn("kaggle", args, { 
       stdio: ['ignore', 'pipe', 'pipe'],
       env: { ...process.env } // Pass environment variables through
     });
@@ -58,15 +58,15 @@ export async function execKaggleCommand(args: string[]): Promise<string> {
     let stdout = "";
     let stderr = "";
     
-    process.stdout.on("data", (data) => {
+    childProc.stdout?.on("data", (data: Buffer) => {
       stdout += data.toString();
     });
     
-    process.stderr.on("data", (data) => {
+    childProc.stderr?.on("data", (data: Buffer) => {
       stderr += data.toString();
     });
     
-    process.on("close", (code) => {
+    childProc.on("close", (code: number | null) => {
       if (code === 0) {
         resolve(stdout);
       } else {
@@ -79,7 +79,7 @@ export async function execKaggleCommand(args: string[]): Promise<string> {
       }
     });
     
-    process.on("error", (err) => {
+    childProc.on("error", (err: Error) => {
       if (err.message.includes("ENOENT")) {
         reject(new Error("Kaggle CLI not found. Please install it using 'pip install kaggle'."));
       } else {
