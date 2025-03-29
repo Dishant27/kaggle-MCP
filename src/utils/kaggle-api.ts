@@ -1,4 +1,27 @@
 import { spawn } from "child_process";
+import fs from "fs";
+import path from "path";
+import os from "os";
+
+/**
+ * Verifies Kaggle API credentials are configured
+ * 
+ * @returns Promise resolving to true if credentials exist
+ */
+export async function verifyKaggleCredentials(): Promise<boolean> {
+  const credentialsPath = path.join(os.homedir(), ".kaggle", "kaggle.json");
+  
+  try {
+    await fs.promises.access(credentialsPath, fs.constants.R_OK);
+    return true;
+  } catch (error) {
+    throw new Error(
+      "Kaggle API credentials not found. " +
+      "Please make sure you have installed the Kaggle CLI and configured your API token. " +
+      "Visit https://github.com/Kaggle/kaggle-api for setup instructions."
+    );
+  }
+}
 
 /**
  * Executes a Kaggle CLI command and returns the output
@@ -7,6 +30,9 @@ import { spawn } from "child_process";
  * @returns Promise with command output
  */
 export async function execKaggleCommand(args: string[]): Promise<string> {
+  // Verify credentials before executing command
+  await verifyKaggleCredentials();
+  
   return new Promise((resolve, reject) => {
     const process = spawn("kaggle", args, { stdio: ['ignore', 'pipe', 'pipe'] });
     
@@ -25,12 +51,21 @@ export async function execKaggleCommand(args: string[]): Promise<string> {
       if (code === 0) {
         resolve(stdout);
       } else {
-        reject(new Error(`Kaggle command failed with code ${code}: ${stderr}`));
+        // Check for authentication errors
+        if (stderr.includes("401") || stderr.includes("unauthorized") || stderr.includes("authentication")) {
+          reject(new Error(`Kaggle authentication failed. Please check your API credentials. Error: ${stderr}`));
+        } else {
+          reject(new Error(`Kaggle command failed with code ${code}: ${stderr}`));
+        }
       }
     });
     
     process.on("error", (err) => {
-      reject(new Error(`Failed to execute Kaggle command: ${err.message}`));
+      if (err.message.includes("ENOENT")) {
+        reject(new Error("Kaggle CLI not found. Please install it using 'pip install kaggle'."));
+      } else {
+        reject(new Error(`Failed to execute Kaggle command: ${err.message}`));
+      }
     });
   });
 }
