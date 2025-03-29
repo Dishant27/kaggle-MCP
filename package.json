@@ -1,0 +1,35 @@
+{
+  "name": "kaggle-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server for interacting with Kaggle competitions",
+  "main": "build/index.js",
+  "type": "module",
+  "bin": {
+    "kaggle-mcp": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod 755 build/index.js",
+    "start": "node build/index.js",
+    "dev": "tsc -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "mcp",
+    "kaggle",
+    "competitions",
+    "model-context-protocol"
+  ],
+  "author": "Dishant27",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.0",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.25",
+    "typescript": "^5.3.3"
+  },
+  "files": [
+    "build"
+  ]
+}
