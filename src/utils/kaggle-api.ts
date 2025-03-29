@@ -3,12 +3,27 @@ import fs from "fs";
 import path from "path";
 import os from "os";
 
+// Environment variable names for credentials
+const KAGGLE_USERNAME_ENV = "KAGGLE_USERNAME";
+const KAGGLE_KEY_ENV = "KAGGLE_KEY";
+
 /**
- * Verifies Kaggle API credentials are configured
+ * Verifies Kaggle API credentials are configured either via:
+ * 1. kaggle.json file in the standard location
+ * 2. Environment variables
  * 
  * @returns Promise resolving to true if credentials exist
  */
 export async function verifyKaggleCredentials(): Promise<boolean> {
+  // Check environment variables first
+  const usernameEnv = process.env[KAGGLE_USERNAME_ENV];
+  const keyEnv = process.env[KAGGLE_KEY_ENV];
+  
+  if (usernameEnv && keyEnv) {
+    return true;
+  }
+  
+  // Check for credential file
   const credentialsPath = path.join(os.homedir(), ".kaggle", "kaggle.json");
   
   try {
@@ -16,9 +31,10 @@ export async function verifyKaggleCredentials(): Promise<boolean> {
     return true;
   } catch (error) {
     throw new Error(
-      "Kaggle API credentials not found. " +
-      "Please make sure you have installed the Kaggle CLI and configured your API token. " +
-      "Visit https://github.com/Kaggle/kaggle-api for setup instructions."
+      "Kaggle API credentials not found. You can set them up in one of two ways:\n" +
+      "1. Create a kaggle.json file in ~/.kaggle/ with your credentials\n" +
+      "2. Add KAGGLE_USERNAME and KAGGLE_KEY to the env section in claude_desktop_config.json\n\n" +
+      "For more information, visit: https://github.com/Kaggle/kaggle-api"
     );
   }
 }
@@ -34,7 +50,10 @@ export async function execKaggleCommand(args: string[]): Promise<string> {
   await verifyKaggleCredentials();
   
   return new Promise((resolve, reject) => {
-    const process = spawn("kaggle", args, { stdio: ['ignore', 'pipe', 'pipe'] });
+    const process = spawn("kaggle", args, { 
+      stdio: ['ignore', 'pipe', 'pipe'],
+      env: { ...process.env } // Pass environment variables through
+    });
     
     let stdout = "";
     let stderr = "";

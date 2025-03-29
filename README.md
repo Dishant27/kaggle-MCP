@@ -18,7 +18,9 @@ A Model Context Protocol (MCP) server for interacting with Kaggle competitions.
 
 ## Authentication Setup
 
-Before using this server, you need to set up Kaggle API credentials:
+There are two ways to authenticate with the Kaggle API:
+
+### Option 1: Using a kaggle.json file (Standard approach)
 
 1. Install the Kaggle CLI:
 ```bash
@@ -46,7 +48,26 @@ chmod 600 ~/.kaggle/kaggle.json  # Set permissions
 Move-Item -Path "$HOME\Downloads\kaggle.json" -Destination "$HOME\.kaggle\kaggle.json"
 ```
 
-The MCP server will automatically use these credentials when making API calls.
+### Option 2: Using Claude for Desktop Configuration (Simpler)
+
+You can directly add your Kaggle credentials to your `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "kaggle": {
+      "command": "node",
+      "args": ["/path/to/build/index.js"],
+      "env": {
+        "KAGGLE_USERNAME": "your-kaggle-username",
+        "KAGGLE_KEY": "your-kaggle-api-key"
+      }
+    }
+  }
+}
+```
+
+Replace `your-kaggle-username` and `your-kaggle-api-key` with your actual Kaggle credentials.
 
 ## Installation
 
@@ -86,7 +107,11 @@ Add the following configuration to your `claude_desktop_config.json` file:
   "mcpServers": {
     "kaggle": {
       "command": "node",
-      "args": ["/path/to/build/index.js"]
+      "args": ["/path/to/build/index.js"],
+      "env": {
+        "KAGGLE_USERNAME": "dishantsr",
+        "KAGGLE_KEY": "7ad10662ff80cd405615799f8eb5c664"
+      }
     }
   }
 }
@@ -110,11 +135,13 @@ Add the following configuration to your `claude_desktop_config.json` file:
 
 If you encounter authentication errors:
 
-1. Verify your `kaggle.json` file is in the correct location:
-   - Linux/Mac: `~/.kaggle/kaggle.json`
-   - Windows: `C:\Users\<USERNAME>\.kaggle\kaggle.json`
+1. Verify your credentials are correctly set:
+   - If using `kaggle.json`, check it's in the correct location:
+     - Linux/Mac: `~/.kaggle/kaggle.json`
+     - Windows: `C:\Users\<USERNAME>\.kaggle\kaggle.json`
+   - If using environment variables, check the `env` section in your `claude_desktop_config.json`
 
-2. Check if the file has the correct permissions:
+2. For `kaggle.json`, check if the file has the correct permissions:
    - On Linux/Mac, run: `chmod 600 ~/.kaggle/kaggle.json`
 
 3. Make sure your API token is still valid. If needed, generate a new one from your Kaggle account page.
