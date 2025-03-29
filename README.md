@@ -2,60 +2,6 @@
 
 A Model Context Protocol (MCP) server for interacting with Kaggle competitions through Claude or other compatible AI assistants.
 
-## Current Capabilities
-
-The server currently provides the following operations for Kaggle competitions:
-
-### 🔍 List Competitions
-- List all active Kaggle competitions
-- Search competitions by keyword
-- Support for pagination to browse through results
-- Display competition details including name, category, deadline, and prize
-
-### 📥 Download Competition Files
-- Download files for any competition
-- Specify custom download path
-- Force re-download of existing files
-- Works with all public competition datasets
-
-### 📤 Submit to Competitions
-- Submit prediction files to competitions
-- Add custom submission messages
-- Get immediate feedback on submission status
-- Requires prior acceptance of competition rules on Kaggle website
-
-### 📋 List Submissions
-- View submission history for a specific competition
-- See submission status and scores
-- Track multiple submissions over time
-
-## Coming Soon
-
-The following features are planned for future updates:
-
-### 🗂️ Dataset Operations
-- List public datasets with search and filtering
-- Download dataset files
-- Create and update personal datasets
-- Version control for datasets
-
-### 📔 Notebook Integration
-- Create and manage notebooks
-- Upload and download notebooks
-- Run notebooks on Kaggle's infrastructure
-- Retrieve notebooks output
-
-### 👥 User Management
-- View user profiles and statistics
-- Follow/unfollow users
-- Get activity feeds
-
-### 🏆 Competition Analysis
-- Detailed competition leaderboard access
-- Team formation and management
-- Discussion forum integration
-- Automated benchmarking
-
 ## Prerequisites
 
 - Node.js 16 or higher
@@ -197,6 +143,42 @@ If the Kaggle CLI is not found:
 
 1. Make sure you have installed it with: `pip install kaggle`
 2. Verify that the Kaggle command is in your PATH by running: `kaggle --version`
+
+## Current Capabilities
+
+The server currently provides the following operations for Kaggle competitions:
+
+### 🔍 List Competitions
+- List all active Kaggle competitions
+- Search competitions by keyword
+- Support for pagination to browse through results
+- Display competition details including name, category, deadline, and prize
+
+### 📥 Download Competition Files
+- Download files for any competition
+- Specify custom download path
+- Force re-download of existing files
+- Works with all public competition datasets
+
+### 📤 Submit to Competitions
+- Submit prediction files to competitions
+- Add custom submission messages
+- Get immediate feedback on submission status
+- Requires prior acceptance of competition rules on Kaggle website
+
+### 📋 List Submissions
+- View submission history for a specific competition
+- See submission status and scores
+- Track multiple submissions over time
+
+## Coming Soon
+
+The following features are planned for future updates:
+
+- Dataset Operations
+- Notebook Integration
+- User Management
+- Competition Analysis
 
 ## License
 
