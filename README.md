@@ -1,6 +1,6 @@
 # Kaggle MCP Server
 
-A Model Context Protocol (MCP) server for interacting with Kaggle competitions through Claude or other compatible AI assistants.
+A Model Context Protocol (MCP) server for interacting with Kaggle competitions and resources through Claude or other compatible AI assistants.
 
 ## Prerequisites
 
@@ -102,8 +102,8 @@ Add the following configuration to your `claude_desktop_config.json` file:
       "command": "node",
       "args": ["/absolute/path/to/build/index.js"],
       "env": {
-        "KAGGLE_USERNAME": "dishantsr",
-        "KAGGLE_KEY": "7ad10662ff80cd405615799f8eb5c664"
+        "KAGGLE_USERNAME": "your-username",
+        "KAGGLE_KEY": "your-api-key"
       }
     }
   }
@@ -114,11 +114,34 @@ Add the following configuration to your `claude_desktop_config.json` file:
 
 Once connected to Claude, you can ask questions like:
 
+### Competitions
 - "Show me the active Kaggle competitions"
 - "Search for image classification competitions"
 - "Download the files for the Titanic competition"
 - "Submit my predictions.csv file to the housing-prices competition with the message 'Random forest model'"
 - "Show me my submissions for the digit-recognizer competition"
+
+### Datasets
+- "List datasets related to healthcare"
+- "Download the COVID-19 dataset from user 'johnsmith'"
+- "Create a new dataset from the files in /path/to/my/data"
+- "Get metadata for the 'username/dataset-name' dataset"
+
+### Notebooks
+- "List my Kaggle notebooks"
+- "Pull the 'data-exploration' notebook from user 'kaggler123'"
+- "Push my updated notebook from /path/to/notebook"
+- "Show me metadata for the 'username/notebook-name' notebook"
+
+### Users
+- "Show me my Kaggle profile information"
+- "Get profile information for user 'grandmaster123'"
+
+### Analysis
+- "Show me the current leaderboard for the Titanic competition"
+- "Get details about the House Prices competition"
+- "Analyze the structure of my competition data in /path/to/competition"
+- "Summarize the content of train.csv"
 
 ## Troubleshooting
 
@@ -144,41 +167,38 @@ If the Kaggle CLI is not found:
 1. Make sure you have installed it with: `pip install kaggle`
 2. Verify that the Kaggle command is in your PATH by running: `kaggle --version`
 
-## Current Capabilities
+## Features
 
-The server currently provides the following operations for Kaggle competitions:
+This server provides comprehensive access to Kaggle resources:
 
-### 🔍 List Competitions
-- List all active Kaggle competitions
-- Search competitions by keyword
-- Support for pagination to browse through results
-- Display competition details including name, category, deadline, and prize
+### 🏆 Competition Operations
+- List and search for competitions
+- Download competition files
+- Submit to competitions
+- View submission history
 
-### 📥 Download Competition Files
-- Download files for any competition
-- Specify custom download path
-- Force re-download of existing files
-- Works with all public competition datasets
+### 📊 Dataset Operations
+- List and search for datasets
+- Download dataset files
+- Create new datasets
+- Retrieve dataset metadata
 
-### 📤 Submit to Competitions
-- Submit prediction files to competitions
-- Add custom submission messages
-- Get immediate feedback on submission status
-- Requires prior acceptance of competition rules on Kaggle website
+### 📓 Notebook Integration
+- List notebooks
+- Pull notebooks for local use
+- Push notebooks to Kaggle
+- Get notebook metadata
+- View notebook output
 
-### 📋 List Submissions
-- View submission history for a specific competition
-- See submission status and scores
-- Track multiple submissions over time
+### 👤 User Management
+- View current user information
+- Get public profile information for other users
 
-## Coming Soon
-
-The following features are planned for future updates:
-
-- Dataset Operations
-- Notebook Integration
-- User Management
-- Competition Analysis
+### 🔍 Competition Analysis
+- View competition leaderboards
+- Get detailed competition information
+- Analyze competition data structure
+- Summarize file contents
 
 ## License
 
