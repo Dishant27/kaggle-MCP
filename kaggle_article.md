@@ -10,7 +10,7 @@ Enter the Kaggle MCP Server: a bridge between AI and human creativity that's red
 
 ## The Invisible Hand: AI Assistants in Your Data Science Journey
 
-Imagine having a brilliant data science partner available 24/7—one that never gets tired, remembers every competition detail, and can execute tedious tasks without complaint. That's the promise of the Model Context Protocol (MCP) when applied to Kaggle workflows.
+Imagine having a brilliant data science partner available 24/7—one that never gets tired, remembers every competition detail, and can execute tedious tasks without complaint. That's the promise of [Anthropic's Model Context Protocol (MCP)](https://www.anthropic.com/news/model-context-protocol) when applied to Kaggle workflows.
 
 MCP isn't just another acronym in the tech soup—it's the neural pathway allowing AI assistants like Claude to step beyond conversation and into action. By creating direct connections to external services and APIs, MCP transforms these AI systems from passive advisors into active collaborators in your data science projects.
 
@@ -18,17 +18,19 @@ MCP isn't just another acronym in the tech soup—it's the neural pathway allowi
 
 Think of it as the difference between having a colleague describe a dataset to you versus having them hand it to you directly. The Kaggle MCP Server eliminates this gap, allowing your AI assistant to reach into Kaggle and bring back precisely what you need.
 
-## What is the Model Context Protocol?
+## What Is the Model Context Protocol?
 
-The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) is an open standard designed to enable AI models to interact with external tools and services. Developed by Anthropic and announced in their [official release](https://www.anthropic.com/news/model-context-protocol), MCP provides a structured way for AI assistants to access and manipulate data beyond their training.
+The [Model Context Protocol](https://modelcontextprotocol.io/introduction) is an open standard that enables AI assistants to interact directly with tools and services. Announced by Anthropic in early 2024, MCP represents a fundamental shift in how we think about AI capabilities.
 
-The protocol defines a standardized communication framework that allows AI models to:
+At its core, MCP is a communication framework with three key elements:
 
-1. Access external data sources and APIs
-2. Execute operations on behalf of users
-3. Return structured results to enhance conversations
+1. **Tools**: Functions that AI assistants can call to access external systems
+2. **Resources**: Data sources that AI assistants can reference during conversations  
+3. **Transport**: The communication layer that enables secure, reliable interaction
 
-This bidirectional communication extends AI capabilities far beyond text generation, unlocking new potential for domain-specific applications—like the Kaggle integration we're exploring in this article.
+As the [official MCP documentation](https://modelcontextprotocol.io/introduction) explains, this protocol transforms AI assistants from isolated text generators into connected agents that can take concrete actions on your behalf.
+
+The Kaggle MCP Server implementation demonstrates the power of this approach in a specialized domain, using TypeScript and Node.js to build a bridge between Claude and the competitive data science platform.
 
 ## Breaking the Fourth Wall: How Kaggle MCP Server Changes Everything
 
@@ -95,7 +97,7 @@ const submissions = await listSubmissions("titanic");
 
 ## The Architecture of Innovation
 
-What makes this system truly remarkable isn't just what it does, but how it does it. The Kaggle MCP Server employs a modular architecture that prioritizes:
+What makes this system truly remarkable isn't just what it does, but how it does it. Following the principles outlined in the [MCP specification](https://modelcontextprotocol.io/introduction), the Kaggle MCP Server employs a modular architecture that prioritizes:
 
 1. **Lightweight Efficiency**: The core server is minimal, focused purely on bridging the communication gap between AI assistants and the Kaggle API.
 
@@ -103,7 +105,7 @@ What makes this system truly remarkable isn't just what it does, but how it does
 
 3. **Secure Authentication**: The server handles Kaggle credentials through environment variables or the standard Kaggle credential files, maintaining security while simplifying access.
 
-4. **Universal Compatibility**: The stdio transport layer ensures compatibility with virtually any MCP-enabled AI assistant.
+4. **Universal Compatibility**: The stdio transport layer ensures compatibility with virtually any MCP-enabled AI assistant, adhering to Anthropic's [interoperability principles](https://www.anthropic.com/news/model-context-protocol).
 
 This isn't just good programming—it's forward-thinking design that anticipates the evolving relationship between humans, AI, and platforms like Kaggle.
 
@@ -114,7 +116,7 @@ The beauty of revolutionary technology often lies in its simplicity. Setting up 
 1. **Node.js + Kaggle CLI**: Ensure you have the prerequisites (Node.js 16+ and the Kaggle CLI).
 2. **Authentication**: Connect your Kaggle credentials—either through the standard `kaggle.json` file or environment variables.
 3. **Install & Build**: A simple `npm install` followed by `npm run build`.
-4. **Configuration**: Add the server to your AI assistant's MCP configuration.
+4. **Configuration**: Add the server to your MCP-compatible AI assistant's configuration.
 
 With these four steps completed, the entire nature of your interaction with Kaggle transforms. Instead of commands and clicks, you can simply say:
 
@@ -125,7 +127,7 @@ With these four steps completed, the entire nature of your interaction with Kagg
 
 ## Beyond Today: The Next Frontier
 
-While the current implementation focuses on competition workflows, the horizon is expansive and promising. Imagine:
+While the current implementation focuses on competition workflows, the horizon is expansive and promising. As Anthropic continues to [evolve the MCP standard](https://www.anthropic.com/news/model-context-protocol), we can expect even more capabilities:
 
 1. **Intelligent Dataset Operations**: "Find me datasets with customer churn data and at least 10,000 rows."
 
@@ -165,14 +167,15 @@ The Kaggle MCP Server represents more than just a convenient integration—it's 
 
 Whether you're a Kaggle novice intimidated by the platform's complexity or a competition veteran looking to focus entirely on modeling rather than mechanics, this server offers a glimpse into a future where the barriers between thought and action continue to dissolve.
 
-As AI assistants evolve and the [Model Context Protocol](https://modelcontextprotocol.io/introduction) expands to more services, we can expect the boundaries between thinking about data, analyzing it, and acting on insights to blur even further—creating a new, more intuitive way to approach the challenges of modern data science.
+As AI assistants evolve and the Model Context Protocol expands to more services, we can expect the boundaries between thinking about data, analyzing it, and acting on insights to blur even further—creating a new, more intuitive way to approach the challenges of modern data science.
 
-## Learn More About MCP
+## Resources to Explore Further
 
-To understand the broader implications of this technology, check out:
+To dive deeper into this technology and its implications:
 
-- [Anthropic's Official MCP Announcement](https://www.anthropic.com/news/model-context-protocol) - Learn about the vision behind the protocol and Anthropic's implementation
-- [Model Context Protocol Documentation](https://modelcontextprotocol.io/introduction) - Dive into the technical details of how MCP works
+- **[Anthropic's MCP Announcement](https://www.anthropic.com/news/model-context-protocol)**: Get the foundational vision and roadmap directly from Anthropic
+- **[Model Context Protocol Documentation](https://modelcontextprotocol.io/introduction)**: Explore the technical details and implementation guidelines
+- **[Kaggle API Documentation](https://www.kaggle.com/docs/api)**: Understand the underlying capabilities being leveraged
 
 ---
 
