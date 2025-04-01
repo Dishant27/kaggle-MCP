@@ -18,6 +18,18 @@ MCP isn't just another acronym in the tech soup—it's the neural pathway allowi
 
 Think of it as the difference between having a colleague describe a dataset to you versus having them hand it to you directly. The Kaggle MCP Server eliminates this gap, allowing your AI assistant to reach into Kaggle and bring back precisely what you need.
 
+## What is the Model Context Protocol?
+
+The [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) is an open standard designed to enable AI models to interact with external tools and services. Developed by Anthropic and announced in their [official release](https://www.anthropic.com/news/model-context-protocol), MCP provides a structured way for AI assistants to access and manipulate data beyond their training.
+
+The protocol defines a standardized communication framework that allows AI models to:
+
+1. Access external data sources and APIs
+2. Execute operations on behalf of users
+3. Return structured results to enhance conversations
+
+This bidirectional communication extends AI capabilities far beyond text generation, unlocking new potential for domain-specific applications—like the Kaggle integration we're exploring in this article.
+
 ## Breaking the Fourth Wall: How Kaggle MCP Server Changes Everything
 
 Built with TypeScript and Node.js, the Kaggle MCP Server isn't just another tool—it's the beginning of a new paradigm for competitive data science. The days of toggling between conversations with AI assistants and manual interactions with Kaggle are coming to an end.
@@ -153,7 +165,14 @@ The Kaggle MCP Server represents more than just a convenient integration—it's 
 
 Whether you're a Kaggle novice intimidated by the platform's complexity or a competition veteran looking to focus entirely on modeling rather than mechanics, this server offers a glimpse into a future where the barriers between thought and action continue to dissolve.
 
-As AI assistants evolve and the Model Context Protocol expands to more services, we can expect the boundaries between thinking about data, analyzing it, and acting on insights to blur even further—creating a new, more intuitive way to approach the challenges of modern data science.
+As AI assistants evolve and the [Model Context Protocol](https://modelcontextprotocol.io/introduction) expands to more services, we can expect the boundaries between thinking about data, analyzing it, and acting on insights to blur even further—creating a new, more intuitive way to approach the challenges of modern data science.
+
+## Learn More About MCP
+
+To understand the broader implications of this technology, check out:
+
+- [Anthropic's Official MCP Announcement](https://www.anthropic.com/news/model-context-protocol) - Learn about the vision behind the protocol and Anthropic's implementation
+- [Model Context Protocol Documentation](https://modelcontextprotocol.io/introduction) - Dive into the technical details of how MCP works
 
 ---
 
