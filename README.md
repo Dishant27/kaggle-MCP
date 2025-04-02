@@ -171,14 +171,16 @@ The server currently provides the following operations for Kaggle competitions:
 - See submission status and scores
 - Track multiple submissions over time
 
-## Coming Soon
+## All Features Now Available
 
-The following features are planned for future updates:
+All the features previously listed as "Coming Soon" are now available in the `feature-complete` branch of this repository. This includes:
 
-- Dataset Operations
-- Notebook Integration
-- User Management
-- Competition Analysis
+- **Dataset Operations**: Browse, search, download, and analyze datasets from Kaggle
+- **Notebook Integration**: Work with Kaggle notebooks directly from your AI assistant
+- **User Management**: Check profile information and competition standings
+- **Competition Analysis**: Get detailed competition metrics and leaderboard insights
+
+Check out the `feature-complete` branch for the most up-to-date and comprehensive implementation of the Kaggle MCP server.
 
 ## License
 
