@@ -95,20 +95,6 @@ node build/index.js
 
 Add the following configuration to your `claude_desktop_config.json` file:
 
-```json
-{
-  "mcpServers": {
-    "kaggle": {
-      "command": "node",
-      "args": ["/absolute/path/to/build/index.js"],
-      "env": {
-        "KAGGLE_USERNAME": "dishantsr",
-        "KAGGLE_KEY": "7ad10662ff80cd405615799f8eb5c664"
-      }
-    }
-  }
-}
-```
 
 ## Example Queries
 
