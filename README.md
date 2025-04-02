@@ -45,20 +45,6 @@ Move-Item -Path "$HOME\Downloads\kaggle.json" -Destination "$HOME\.kaggle\kaggle
 
 You can directly add your Kaggle credentials to your `claude_desktop_config.json` file:
 
-```json
-{
-  "mcpServers": {
-    "kaggle": {
-      "command": "node",
-      "args": ["/path/to/build/index.js"],
-      "env": {
-        "KAGGLE_USERNAME": "your-kaggle-username",
-        "KAGGLE_KEY": "your-kaggle-api-key"
-      }
-    }
-  }
-}
-```
 
 Replace `your-kaggle-username` and `your-kaggle-api-key` with your actual Kaggle credentials.
 
