@@ -1,4 +1,4 @@
-# Kaggle MCP Server
+# <img src="https://www.kaggle.com/static/images/site-logo.svg" alt="Kaggle Logo" width="80" height="24"> Kaggle MCP Server
 
 A Model Context Protocol (MCP) server for interacting with Kaggle competitions through Claude or other compatible AI assistants.
 
