@@ -2,6 +2,11 @@
 
 A Model Context Protocol (MCP) server for interacting with Kaggle competitions through Claude or other compatible AI assistants.
 
+## 📖 Learn More
+Want to understand the full potential of this server? Check out the detailed article:
+
+[AI-Powered Data Science Revolution: How Kaggle MCP Server Transforms AI Capabilities](https://www.linkedin.com/pulse/ai-powered-data-science-revolution-how-kaggle-mcp-server-kumar-zn7sc/)
+
 ## Prerequisites
 
 - Node.js 16 or higher
