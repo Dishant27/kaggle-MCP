@@ -9,7 +9,7 @@ Want to understand the full potential of this server? Check out the detailed art
 
 ## Prerequisites
 
-- Node.js 16 or higher
+- Node.js 18 or higher
 - TypeScript
 - Kaggle CLI installed (`pip install kaggle`)
 - Kaggle API credentials configured
@@ -98,7 +98,20 @@ node build/index.js
 
 ### Connecting with Claude for Desktop
 
-Add the following configuration to your `claude_desktop_config.json` file.
+Add the following configuration to your `claude_desktop_config.json` file (use the absolute path to your clone):
+
+```json
+{
+  "mcpServers": {
+    "kaggle": {
+      "command": "node",
+      "args": ["/absolute/path/to/kaggle-MCP/build/index.js"]
+    }
+  }
+}
+```
+
+Add the `env` block from Option 2 above if you aren't using `kaggle.json`.
 
 ## Example Queries
 
@@ -161,17 +174,17 @@ The server currently provides the following operations for Kaggle competitions:
 - See submission status and scores
 - Track multiple submissions over time
 
-## All Features Now Available
+## Extended Features (separate branch)
 
-All the features previously listed as "Coming Soon" are now available in the `feature-complete` branch of this repository. This includes:
+More tools live in the [`feature/extended-functionality`](https://github.com/Dishant27/kaggle-MCP/tree/feature/extended-functionality) branch, which hasn't been merged into `main` yet. It covers:
 
 - **Dataset Operations**: Browse, search, download, and analyze datasets from Kaggle
 - **Notebook Integration**: Work with Kaggle notebooks directly from your AI assistant
 - **User Management**: Check profile information and competition standings
 - **Competition Analysis**: Get detailed competition metrics and leaderboard insights
 
-Check out the `feature-complete` branch for the most up-to-date and comprehensive implementation of the Kaggle MCP server.
+Check out that branch if you need more than competitions.
 
 ## License
 
-MIT
+[MIT](LICENSE)

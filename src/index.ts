@@ -11,11 +11,7 @@ import { listSubmissionsTool } from "./tools/list-submissions.js";
 // Create MCP server
 const server = new McpServer({
   name: "Kaggle Competitions",
-  version: "1.0.0",
-  capabilities: {
-    resources: {},
-    tools: {}
-  }
+  version: "1.0.0"
 });
 
 // Register tools
