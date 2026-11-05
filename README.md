@@ -1,6 +1,17 @@
 # <img src="https://www.kaggle.com/static/images/site-logo.svg" alt="Kaggle Logo" width="80" height="24"> Kaggle MCP Server
 
+[![CI](https://github.com/Dishant27/kaggle-MCP/actions/workflows/ci.yml/badge.svg)](https://github.com/Dishant27/kaggle-MCP/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 A Model Context Protocol (MCP) server for interacting with Kaggle competitions through Claude or other compatible AI assistants.
+
+## ⚠️ Status and known limitations (read this first)
+
+- **Competitions only on `main`.** Datasets, notebooks and user tools live in the unmerged [`feature/extended-functionality`](https://github.com/Dishant27/kaggle-MCP/tree/feature/extended-functionality) branch.
+- **Wraps the Kaggle CLI.** Every tool shells out to `kaggle`, so the CLI must be installed (`pip install kaggle`) and on your `PATH`. Output formats follow whatever CLI version you have installed.
+- **Your own Kaggle account and limits apply.** Downloads and submissions only work for competitions whose rules you've accepted on kaggle.com, and Kaggle's daily submission limits still apply.
+- **Credentials are never logged.** They come from `~/.kaggle/kaggle.json` or the `KAGGLE_USERNAME` / `KAGGLE_KEY` env vars and are passed straight to the CLI.
+- **Tests are light.** CI type-checks, builds and runs a small credential-handling test on Node 20 and 22; the tools themselves aren't tested against the live Kaggle API.
 
 ## 📖 Learn More
 Want to understand the full potential of this server? Check out the detailed article:
